@@ -22,13 +22,14 @@ public class TraineeDAO {
 	}
 	
 	public Connection getConnection() {
-		Connection con;
+		Connection con = null;
 		try {
+			this.loadDriver(dbDriver);
 			con = DriverManager.getConnection(url, username, password);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return null;
+		return con;
 	}
 	
 	public String insert(Trainee trainee) {
@@ -47,7 +48,7 @@ public class TraineeDAO {
 			e.printStackTrace();
 			result = "Enter the data again";
 		}
-		return sql;
+		return result;
 	}
 
 }
